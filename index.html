@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TE AMO — Corazones</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #000000;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Texto neón */
+    h1 {
+      font-size: 5rem;
+      color: #ff1aff;
+      text-shadow: 0 0 5px #ff1aff, 0 0 10px #ff1aff, 
+                   0 0 20px #ff1aff, 0 0 40px #ff1aff;
+      animation: pulse 2s infinite;
+      margin: 0;
+      z-index: 10;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 0 0 5px #ff1aff, 0 0 15px #ff1aff;
+      margin: 0;
+      z-index: 10;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Lluvia de corazones */
+    .heart {
+      position: absolute;
+      top: -2rem;
+      font-size: 2rem;
+      color: #ff1aff;
+      text-shadow: 0 0 5px #ff1aff, 0 0 15px #ff1aff, 0 0 30px #ff1aff;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>TE AMO ❤︎</h1>
+  <h2>muchísimo</h2>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤︎";
+
+      // Posición aleatoria
+      heart.style.left = Math.random() * 100 + "vw";
+
+      // Tamaño aleatorio
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+
+      // Colores (rosa o azul aleatorio)
+      if (Math.random() < 0.3) {
+        heart.style.color = "#1a9fff"; 
+        heart.style.textShadow = "0 0 5px #1a9fff, 0 0 15px #1a9fff, 0 0 30px #1a9fff";
+      }
+
+      // Duración aleatoria
+      const duration = Math.random() * 5 + 5;
+      heart.style.animationDuration = duration + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
+
